@@ -1,31 +1,31 @@
 import styled from "styled-components"
-
+import { Link } from "react-router-dom"
 export default function SuccessPage(props) {
 
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
-            <TextContainer>
+            <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
                 <p>{props.sucesso.filme}</p>
                 <p>{props.sucesso.data} - {props.sucesso.hora}</p>
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
                 
                {props.sucesso.assentos.map(f => <p key={f}>Assento {f+1}</p>)} 
                 
             </TextContainer>
 
-            <TextContainer>
+            <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
                 <p>Nome: {props.dados.name}</p>
                 <p>CPF: {props.dados.cpf}</p>
             </TextContainer>
 
-            <button>Voltar para Home</button>
+            <Link to={`/`}> <button data-test="go-home-btn">Voltar para Home</button></Link>
         </PageContainer>
     )
 }

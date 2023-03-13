@@ -72,7 +72,7 @@ export default function SeatsPage(props) {
             
             <SeatsContainer>
                 
-                {assentos.seats.map((a,i) => <SeatItem onClick={() => cor(i)} key={a.id} assentos={assentos} selecionado={selecionado} i={i}>{a.name} </SeatItem>)}
+                {assentos.seats.map((a,i) => <SeatItem data-test="seat" onClick={() => cor(i)} key={a.id} assentos={assentos} selecionado={selecionado} i={i}>{a.name} </SeatItem>)}
                 
             </SeatsContainer>
 
@@ -93,16 +93,16 @@ export default function SeatsPage(props) {
 
             <FormContainer>
                 Nome do Comprador:
-                <input value={props.dados.name} onChange={(e)=> props.setDados({...props.dados,name:(e.target.value)})} placeholder="Digite seu nome..." />
+                <input data-test="client-name" value={props.dados.name} onChange={(e)=> props.setDados({...props.dados,name:(e.target.value)})} placeholder="Digite seu nome..." />
 
                 CPF do Comprador:
-                <input value={props.dados.cpf} onChange={(e)=> props.setDados({...props.dados,cpf:(e.target.value)}) } placeholder="Digite seu CPF..." />
+                <input data-test="client-cpf" value={props.dados.cpf} onChange={(e)=> props.setDados({...props.dados,cpf:(e.target.value)}) } placeholder="Digite seu CPF..." />
 
-                <Link to={`/sucesso`}><button onClick={reservar}>Reservar Assento(s)</button></Link>
+                <Link to={`/sucesso`}><button data-test="book-seat-btn" onClick={reservar}>Reservar Assento(s)</button></Link>
             </FormContainer>
 
-            <FooterContainer>
-                <div>
+            <FooterContainer data-test="footer" >
+                <div >
                     <img src={assentos.movie.posterURL} alt="poster" />
                 </div>
                 <div>
