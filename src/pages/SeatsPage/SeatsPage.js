@@ -56,15 +56,11 @@ export default function SeatsPage(props) {
         } 
        
          function reservar(){
-            props.setDados({ids:[ids], name:nome,cpf:cpf})
+            props.setDados({ids:ids, name:nome,cpf:cpf})
             props.setSucesso({filme:assentos.movie.title, data:assentos.day.date ,hora:assentos.name, assentos:selecionado})
-            
-            const promisse = axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`,props.dados)
-            promisse.then(console.log('oi'));
-            
          }
          
-        console.log(ids)
+        console.log(props.dados)
    
     return (
         <PageContainer>

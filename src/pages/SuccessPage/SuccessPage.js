@@ -1,7 +1,12 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import axios from "axios";
 export default function SuccessPage(props) {
-
+    
+    
+    const promisse = axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`,props.dados)
+    
+    
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
