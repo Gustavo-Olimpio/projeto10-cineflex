@@ -10,7 +10,8 @@ export default function SeatsPage(props) {
     
     const [assentos, setAssentos] = useState(undefined);
     const [selecionado, setSelecionado] = useState([]);
-    
+    const [nome, setNome] = useState();
+    const [cpf, setCpf] = useState();
     const [ids,setIds] = useState([]);
     
     
@@ -55,7 +56,7 @@ export default function SeatsPage(props) {
         } 
        
          function reservar(){
-            props.setDados({ids:[ids]})
+            props.setDados({ids:[ids], name:nome,cpf:cpf})
             props.setSucesso({filme:assentos.movie.title, data:assentos.day.date ,hora:assentos.name, assentos:selecionado})
             
             const promisse = axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many`,props.dados)
@@ -93,10 +94,10 @@ export default function SeatsPage(props) {
 
             <FormContainer>
                 Nome do Comprador:
-                <input data-test="client-name" value={props.dados.name} onChange={(e)=> props.setDados({...props.dados,name:(e.target.value)})} placeholder="Digite seu nome..." />
+                <input data-test="client-name" value={nome} onChange={(e)=> setNome(e.target.value) } placeholder="Digite seu nome..." />
 
                 CPF do Comprador:
-                <input data-test="client-cpf" value={props.dados.cpf} onChange={(e)=> props.setDados({...props.dados,cpf:(e.target.value)}) } placeholder="Digite seu CPF..." />
+                <input data-test="client-cpf" value={cpf} onChange={(e)=> setCpf(e.target.value)} placeholder="Digite seu CPF..." />
 
                 <Link to={`/sucesso`}><button data-test="book-seat-btn" onClick={reservar}>Reservar Assento(s)</button></Link>
             </FormContainer>
